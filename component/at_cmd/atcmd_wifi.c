@@ -135,6 +135,10 @@ static void print_wifi_setting(unsigned char wlan_idx, rtw_wifi_setting_t *pSett
 	} else if (pSetting->security_type == (WPA3_SECURITY | ENTERPRISE_ENABLED)) {
 		at_printf("  SECURITY => WPA3 ENTERPRISE\r\n");
 #endif
+#ifdef CONFIG_OWE_SUPPORT
+	} else if (pSetting->security_type == RTW_SECURITY_WPA3_OWE) {
+		at_printf("  SECURITY => WPA3-OWE\r\n");
+#endif
 	} else {
 		at_printf("  SECURITY => UNKNOWN\r\n");
 	}
@@ -181,6 +185,9 @@ static void print_scan_result(rtw_scan_result_t *record)
 			  (record->security == RTW_SECURITY_WPA3_AES_PSK) ? "WPA3-SAE AES" :
 			  (record->security == RTW_SECURITY_WPA2_WPA3_MIXED) ? "WPA2/WPA3-SAE AES" :
 			  (record->security == (WPA3_SECURITY | ENTERPRISE_ENABLED)) ? "WPA3 Enterprise" :
+#endif
+#ifdef CONFIG_OWE_SUPPORT
+			  (record->security == RTW_SECURITY_WPA3_OWE) ? "WPA3-OWE" :
 #endif
 			  "Unknown            ");
 
