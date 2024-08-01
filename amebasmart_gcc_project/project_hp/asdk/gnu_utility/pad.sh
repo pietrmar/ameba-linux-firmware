@@ -26,7 +26,9 @@ else
 	padcount=$(($newsize - $filesize))
 fi
 
-for (( i=$padcount; i > 0; i-- ))
+i=$padcount
+while [ $i -gt 0 ]
 do
 	echo -n -e "\xFF" >> $IMAGE_FILENAME
+	i=$((i - 1))
 done

@@ -21,7 +21,9 @@ filesize=$(stat -c "%s" $IMAGE_FILENAME)
 newsize=$((((($filesize - 1) >> 12) + 1) << 12))
 padcount=$(($newsize - $filesize))
 
-for (( i=$padcount; i > 0; i-- ))
+i=$padcount
+while [ $i -gt 0 ]
 do
 	echo -n -e "\xFF" >> $IMAGE_FILENAME
+	i=$((i - 1))
 done
