@@ -14,7 +14,7 @@ ROOTDIR		:= $(shell realpath --relative-to=$(CURRENT_PATH) $(ABS_ROOTDIR))
 endif
 
 ASDK_VER=10.3.1
-TOOLCHAINDIR	= /opt/rtk-toolchain
+TOOLCHAINDIR	?= /opt/rtk-toolchain
 
 
 #gcc release

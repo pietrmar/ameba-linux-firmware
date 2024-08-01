@@ -9,7 +9,7 @@ include ../../../../amebasmart_gcc_project/menuconfig/.config_ap
 include Formosa.mk
 
 ASDK_VER = 10.3.1
-TOOLCHAINDIR	= /opt/rtk-toolchain
+TOOLCHAINDIR	?= /opt/rtk-toolchain
 
 
 COMPILEOS = $(shell uname -o)
